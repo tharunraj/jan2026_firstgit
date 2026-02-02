@@ -1,5 +1,5 @@
 ---
-- hosts: lin
+- hosts: "{{ target_hosts }}"
   tasks:
     - name: Ping server
       ansible.builtin.ping:
