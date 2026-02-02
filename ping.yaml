@@ -1,10 +1,10 @@
 ---
-hosts: lin
-tasks:
-  - name: Ping server
-    ansible_builtin.ping:
-    register: testt
-  - name: display the result
-    ansible_builtin.debug:
-      var: testt
+- hosts: lin
+  tasks:
+    - name: Ping server
+      ansible.builtin.ping:
+      register: testt
       
+    - name: Display the result
+      ansible.builtin.debug:
+        var: testt
