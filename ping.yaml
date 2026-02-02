@@ -1,5 +1,5 @@
 ---
-hosts:
+hosts: lin
 tasks:
   - name: Ping server
     ansible_builtin.ping:
