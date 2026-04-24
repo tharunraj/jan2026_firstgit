@@ -1,0 +1,19 @@
+---
+- name: Install apache
+  hosts: all
+  become: false
+
+  tasks:
+    -  name: Install apache and Start
+       ansible.bulitin.yum:
+         name: httpd
+         state: present
+         enabled: true
+       when: ansible_os_family == "RedHat"
+    -  name: Validating
+       ansible.builtin.command: systemctl status httpd
+       register: apache_status
+       when: ansible_os_family == "RedHat"
+    -  name: Print
+       debug:
+         msg: "{{ apache_status.stdout }}"
