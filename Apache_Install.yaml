@@ -25,6 +25,8 @@
        ansible.builtin.command: systemctl status httpd
        register: apache_status
        when: ansible_os_family == "RedHat"
-    -  name: Print
+    -  name: Gather Service Facts
+       service_facts:
+    -  name: Checking service status
        debug:
-         msg: "{{ apache_status.stdout }}"
+         msg: "{{ ansible_facts.service['httpd.service'] }}"
