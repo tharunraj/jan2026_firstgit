@@ -5,7 +5,7 @@
 
   tasks:
     -  name: Install apache and Start
-       ansible.builitin.yum:
+       ansible.builtin.yum:
          name: httpd
          state: present
          enabled: true
