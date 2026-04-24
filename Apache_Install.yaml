@@ -29,4 +29,4 @@
        service_facts:
     -  name: Checking service status
        debug:
-         msg: "{{ ansible_facts.service['httpd.service'] }}"
+         msg: "{{ ansible_facts.services['httpd.service'] }}"
