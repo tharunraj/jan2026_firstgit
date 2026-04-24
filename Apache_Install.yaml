@@ -8,6 +8,8 @@
        ansible.builtin.yum:
          name: httpd
          state: present
+    -  name: Enabling Service
+       service:
          enabled: true
        when: ansible_os_family == "RedHat"
     -  name: Validating
