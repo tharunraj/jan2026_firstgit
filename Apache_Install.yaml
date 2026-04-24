@@ -4,12 +4,20 @@
   become: false
 
   tasks:
+    -  name: Checking Server Subscription
+       command: subscription-manager status
+       register: subscription_status
+    -  name: Printing Subscription
+       debug:
+         msg: "{{subscription_status.stdout}}"
     -  name: Install apache and Start
        ansible.builtin.yum:
          name: httpd
          state: present
+       when: "{{ subscription_status }}"
     -  name: Enabling Service
        service:
+         state: started
          enabled: true
        when: ansible_os_family == "RedHat"
     -  name: Validating
